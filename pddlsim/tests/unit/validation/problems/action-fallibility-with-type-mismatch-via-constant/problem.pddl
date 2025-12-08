@@ -1,0 +1,5 @@
+(define (problem action-fallibility-with-type-mismatch-via-constant)
+        (:domain invalid-problems-domain)
+        (:requirements :fallible-actions)
+        (:fails (:action (move lobby) :on 0.5 (and)))
+        (:goal (and)))

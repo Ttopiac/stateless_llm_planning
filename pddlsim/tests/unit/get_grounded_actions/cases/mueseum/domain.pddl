@@ -1,0 +1,10 @@
+(define (domain mueseum)
+        (:requirements :typing :equality :negative-preconditions)
+        (:types person exhibit)
+        (:predicates (at ?p - person ?e - exhibit))
+        (:action visit
+         :parameters (?p - person ?from ?to - exhibit)
+         :precondition (and (at ?p ?from)
+                       (not (= ?from ?to)))
+         :effect (and (at ?p ?to)
+                      (not (at ?p ?from)))))

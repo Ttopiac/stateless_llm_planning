@@ -1,0 +1,1 @@
+argument `bob` (4:29) in `at` (4:22) is of type `person` (3:25), but is supposed to be of type `room` (5:43)

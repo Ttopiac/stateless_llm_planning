@@ -1,0 +1,1 @@
+argument `?b` (7:29) in `wow` (7:25) is of type `beans` (6:28), but is supposed to be of type `cool` (4:32)

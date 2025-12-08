@@ -1,0 +1,5 @@
+(define (problem revealable-with-impossible-probability)
+        (:domain invalid-problems-domain)
+        (:requirements :revealables)
+        (:reveals (when 1.2 (and) (and)))
+        (:goal (and)))

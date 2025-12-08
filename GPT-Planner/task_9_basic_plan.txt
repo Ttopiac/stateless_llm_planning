@@ -1,0 +1,8 @@
+(walk rob kitchen dining)
+(find_table rob table_1 dining)
+(walk_table rob table_1 dining)
+(grasp_plate rob plate_0 dining)
+(walk rob dining kitchen)
+(walk_sink rob sink_1 plate_0 kitchen)
+(place_plate rob plate_0 dining)
+; cost = 7 (unit cost)

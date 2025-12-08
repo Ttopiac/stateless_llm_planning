@@ -1,0 +1,19 @@
+__pycache__/
+
+# Pytest specific
+.benchmarks/
+.pytest_cache/
+
+# UV specific
+.venv/
+dist/
+.python-version
+
+# JetBrains specific
+.idea/
+
+# Ruff specific
+.ruff_cache/
+
+# Mypy specific
+.mypy_cache/

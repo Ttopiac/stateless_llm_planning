@@ -1,0 +1,1 @@
+constant `y` (5:21) is of undefined type `beans` (5:25)

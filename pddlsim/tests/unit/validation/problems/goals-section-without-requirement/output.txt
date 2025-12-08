@@ -1,0 +1,1 @@
+goals section (3:10) defined, but `:multiple-goals` does not appear in requirements section

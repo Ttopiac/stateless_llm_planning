@@ -1,0 +1,5 @@
+(define (domain predicate-definition-with-undefined-type)
+        (:requirements :typing)
+        (:types cool)
+        (:predicates (wow ?x - cool)
+                     (cool ?y - cool ?z - beans)))

@@ -1,0 +1,6 @@
+(define (problem action-fallibility-with-type-mismatch-via-object)
+        (:domain invalid-problems-domain)
+        (:requirements :fallible-actions)
+        (:objects dining-hall - room)
+        (:fails (:action (move dining-hall) :on 0.5 (and)))
+        (:goal (and)))

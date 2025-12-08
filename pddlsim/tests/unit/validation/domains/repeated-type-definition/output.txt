@@ -1,0 +1,1 @@
+type with name `a` (3:31) is defined multiple times in types section (3:10)

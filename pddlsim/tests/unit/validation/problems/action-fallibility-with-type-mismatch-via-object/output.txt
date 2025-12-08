@@ -1,0 +1,1 @@
+object `dining-hall` (5:32) in `move` (5:27) is of type `room` (4:33), but is supposed to be of type `person` (7:28)

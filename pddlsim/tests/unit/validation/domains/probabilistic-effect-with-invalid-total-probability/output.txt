@@ -1,0 +1,1 @@
+total probability of probabilistic effect (5:19) mustn't be greater than 1, is 1.2

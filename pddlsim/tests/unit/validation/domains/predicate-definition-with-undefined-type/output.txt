@@ -1,0 +1,1 @@
+parameter `?z` (5:38) of predicate definition `cool` (5:23) is of undefined type `beans` (5:43)

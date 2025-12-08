@@ -1,0 +1,1 @@
+object `backroom` (3:19) is of undefined type `a-room` (3:30)

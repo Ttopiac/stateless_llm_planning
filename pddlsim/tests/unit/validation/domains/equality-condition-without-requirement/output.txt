@@ -1,0 +1,1 @@
+equality predicate (4:25) used in condition, but `:equality` is not in requirements section

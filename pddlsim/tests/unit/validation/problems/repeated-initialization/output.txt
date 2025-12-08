@@ -1,0 +1,1 @@
+`(at bob lobby)` is defined multiple times in initialization section

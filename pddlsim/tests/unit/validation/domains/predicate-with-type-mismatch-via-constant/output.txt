@@ -1,0 +1,1 @@
+argument `my-bean` (8:29) in `wow` (8:25) is of type `beans` (4:31), but is supposed to be of type `cool` (5:32)

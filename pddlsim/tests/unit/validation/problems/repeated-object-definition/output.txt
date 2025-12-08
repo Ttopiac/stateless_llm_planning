@@ -1,0 +1,1 @@
+object with name `bob` (3:32) is defined multiple times in objects section

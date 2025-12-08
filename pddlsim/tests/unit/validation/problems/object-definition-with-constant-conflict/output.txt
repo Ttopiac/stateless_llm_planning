@@ -1,0 +1,1 @@
+object `lobby` (3:19) shares name with a constant in domain

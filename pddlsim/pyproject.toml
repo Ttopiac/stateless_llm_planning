@@ -1,0 +1,90 @@
+[project]
+name = "pddlsim"
+version = "0.2.0.dev4"
+description = "PDDL-based simulator for the BIU course \"Introduction to Intelligent, Knowledge-Based and Cognitive Systems\""
+authors = [
+    { name = "Gal A. Kaminka", email = "galk@cs.biu.ac.il" },
+    { name = "Yoav Grimland", email = "miestrode@proton.me" },
+    { name = "Micha S. Molko", email = "michamolko@gmail.com" },
+]
+dependencies = [
+    "cbor2>=5.7.0",
+    "lark>=1.2.2",
+    "clingo>=5.8.0",
+    "koda-validate>=5.0.0",
+]
+requires-python = ">=3.12"
+readme = "README.md"
+license = "Apache-2.0"
+keywords = ["PDDL", "agent", "simulator"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+[build-system]
+requires = ["uv_build>=0.8.14,<0.9.0"]
+build-backend = "uv_build"
+
+[project.urls]
+Repository = "https://github.com/galk-research/pddlsim"
+Issues = "https://github.com/galk-research/pddlsim/issues"
+Documentation = "https://github.com/galk-research/pddlsim/wiki"
+
+[project.optional-dependencies]
+agents = ["unified-planning[fast-downward]>=1.2.0"]
+cli = ["click>=8.2.1", "pddlsim[agents]"]
+
+[project.scripts]
+pddlsim = "pddlsim._cli:pddlsim_command"
+
+[dependency-groups]
+dev = ["pytest>=8.4.0", "pytest-asyncio>=1.0.0"]
+doc = ["pdoc>=15.0.3"]
+lint = ["mypy>=1.15.0", "ruff>=0.11.8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/unit/**/test.py", "tests/integration/**/test.py"]
+filterwarnings = ["ignore::DeprecationWarning"]
+# See: https://pytest-benchmark.readthedocs.io/en/latest/usage.html#commandline-options
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 80
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # PEP8 naming
+    "N",
+    # Perflint
+    "PERF",
+    # pydocstyle
+    "D",
+    # refurb
+    "FURB",
+    # Ruff-specific rules
+    "RUF",
+    # isort
+    "I",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D"]
+"examples/**" = ["D"]

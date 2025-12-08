@@ -1,0 +1,1 @@
+types section (2:10) is defined in domain, but `:typing` does not appear in requirements section

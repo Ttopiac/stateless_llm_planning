@@ -1,0 +1,1 @@
+predicate `wow` (7:25) is defined with arity 1, but is used with arity 2

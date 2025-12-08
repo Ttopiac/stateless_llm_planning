@@ -1,0 +1,4 @@
+(move bob start-room goal-room goal-switch)
+(move bob start-room room-left switch-right)
+(move bob start-room room-top switch-right)
+(move bob start-room room-right dummy-switch)

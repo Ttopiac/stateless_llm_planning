@@ -31,6 +31,14 @@ Experiments on **six household tasks** with three frontier LLMs (Gemini-3-Pro, G
 - **Gemini-3-Pro**: success rate improved from ~10% → **66%**
 - **GPT-5.1 and Grok-4.1-Fast**: raised to **near-perfect performance**
 
+![Success Rate](success_rate.png)
+
+The bar chart above compares success rates across all four method variants and three models. Each added mechanism yields a clear step-up: trajectory history alone roughly triples the baseline rate, and adding active querying pushes GPT-5.1 and Grok-4.1-Fast to 100% and ~92% respectively.
+
+![Error Modes](error_modes.png)
+
+Table I breaks down the error statistics (invalid actions, non-meaningful actions, and step exceedances) per method and model across 12 trials. The baseline suffers heavily from over-explanation errors (Gemini-3-Pro: 10 invalid actions) and step exceedances (Grok-4.1-Fast: 5), both of which drop sharply once trajectory-aware prompting and active querying are applied.
+
 ### Core Insight
 
 > Three lightweight, prompt-level interventions — trajectory history, on-demand human queries, and output validation — are sufficient to dramatically improve stateless LLM planning without any fine-tuning or internal memory.

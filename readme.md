@@ -1,3 +1,42 @@
+# Stateless LLM as Zero-Shot Planners with Trajectory-Aware Prompt and Querying Human Feedback
+
+> **Paper:** [Overleaf Report](https://www.overleaf.com/read/qvqwgjmcrbcn) | **Author:** Chi-Hui Lin
+
+## Key Takeaways
+
+This research investigates how reliable **stateless LLMs** (APIs with no memory between calls) are for **online, zero-shot household task planning**, and proposes three simple, training-free mechanisms to substantially improve their performance.
+
+### Problem: Three Dominant Failure Modes of Stateless LLMs
+
+A naive stateless baseline — prompting the LLM at each step with only the goal, current state, and available actions — consistently fails in three ways:
+
+| Error Mode | Description |
+|---|---|
+| **Repeated strategies** | The LLM cycles through the same action or short action sequence in a loop |
+| **Non-meaningful actions** | The LLM selects actions that leave the environment state unchanged |
+| **Over-explanation** | The model interleaves natural language with its action output, producing an invalid response |
+
+These failures cause unnecessary consumption of planning steps and unexpected episode termination.
+
+### Solution: Three Training-Free Mechanisms
+
+1. **Trajectory-aware prompting** — Appends the history of executed actions to each prompt, giving the LLM context about what has already been tried.
+2. **LLM-initiated queries** — Instructs the agent to ask a clarifying question instead of guessing when uncertain; the resulting Q&A pairs are replayed in subsequent prompts.
+3. **Post-response check with a second chance** — Detects invalid LLM outputs, sends a short corrective feedback message, and lets the model retry before terminating.
+
+### Results
+
+Experiments on **six household tasks** with three frontier LLMs (Gemini-3-Pro, GPT-5.1, Grok-4.1-Fast) in the **TextHouse-Gym** benchmark show:
+
+- **Gemini-3-Pro**: success rate improved from ~10% → **66%**
+- **GPT-5.1 and Grok-4.1-Fast**: raised to **near-perfect performance**
+
+### Core Insight
+
+> Three lightweight, prompt-level interventions — trajectory history, on-demand human queries, and output validation — are sufficient to dramatically improve stateless LLM planning without any fine-tuning or internal memory.
+
+---
+
 ## Installation
 
 ### 1. Clone the repository
@@ -6,7 +45,6 @@
 git clone https://github.com/Ttopiac/llm_world.git
 cd llm_world
 ```
-
 ### 2. Create and activate the conda environment
 
 ```bash
@@ -23,38 +61,3 @@ From the repo root (`v` directory):
 ```bash
 pip install "numpy==2.3.5" "pandas==2.3.3" "openai==2.8.1" "gymnasium==1.2.2"
 ```
-
-Then install the local `pddlsim` package using a relative path:
-
-```bash
-cd pddlsim
-pip install .
-cd ..
-```
-
-### 4. Verify installation
-
-Back at the repo root:
-
-```bash
-python -c "import numpy, pandas, openai, gymnasium, pddlsim; print('All imports OK')"
-```
-
-If this prints `All imports OK`, the environment is correctly set up with:
-
-- `python==3.12.12`  
-- `numpy==2.3.5`  
-- `pandas==2.3.3`  
-- `openai==2.8.1`  
-- `gymnasium==1.2.2`  
-- `pddlsim==0.2.0.dev4` (installed from the local `pddlsim/` directory)
-
-
-## Acknowledgements
-
-This work builds upon and integrates contributions from two excellent projects:
-
-- **[GPT-Planner](https://github.com/yding25/GPT-Planner)** for providing PDDL domain and problem files.
-- **[pddlsim](https://github.com/galk-research/pddlsim)** for providing simulation capabilities for PDDL domain-problem pairs.
-
-Our contribution is to make these PDDL environments **interactive** and wrap them as **Gymnasium-compatible** environments, enabling seamless integration with modern reinforcement learning workflows and LLM-based planning agents.
